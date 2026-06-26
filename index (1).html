@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Panther Dubai — VIP Nightclub Experience</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --electric: #00D2FF;
+    --cyan: #00F0FF;
+    --bg-deep: #0B0B0C;
+    --bg-mid: #121214;
+    --bg-card: #16161A;
+    --text-muted: #6B6B7A;
+    --text-soft: #A8A8B8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg-deep);
+    color: #E8E8F0;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* ── LOGO ── */
+  .panther-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-emblem {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--electric);
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba(0,210,255,0.5), inset 0 0 8px rgba(0,210,255,0.1);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .logo-emblem::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--electric);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--cyan), 0 0 16px var(--cyan);
+  }
+  .logo-emblem::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--electric), transparent);
+    transform: rotate(0deg);
+  }
+  .logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-wordmark span:first-child {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.18em;
+    color: #FFFFFF;
+    text-shadow: 0 0 20px rgba(0,210,255,0.3);
+  }
+  .logo-wordmark span:last-child {
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    color: var(--electric);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(11,11,12,0.72);
+    border-bottom: 1px solid rgba(0,210,255,0.1);
+    padding: 0 1.5rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--electric); }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    background: linear-gradient(135deg, #00D2FF 0%, #00F0FF 100%);
+    color: #0B0B0C;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    box-shadow: 0 0 20px rgba(0,210,255,0.35);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 35px rgba(0,210,255,0.7), 0 0 60px rgba(0,210,255,0.2);
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #00F0FF 0%, #00D2FF 100%);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--electric);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.5rem;
+    border: 1px solid rgba(0,210,255,0.45);
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-ghost:hover {
+    border-color: var(--electric);
+    background: rgba(0,210,255,0.08);
+    box-shadow: 0 0 20px rgba(0,210,255,0.2);
+    transform: translateY(-1px);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.04);
+    transition: transform 8s ease;
+  }
+  .hero:hover .hero-bg { transform: scale(1.0); }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(11,11,12,0.92) 0%,
+      rgba(11,11,12,0.78) 40%,
+      rgba(11,11,12,0.88) 100%
+    );
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,210,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,210,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,210,255,0.07) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 68px;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--electric);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--electric);
+    box-shadow: 0 0 6px var(--electric);
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 8vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 60px rgba(0,210,255,0.15);
+  }
+  .hero-title .accent {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,210,255,0.7);
+    text-shadow: 0 0 30px rgba(0,210,255,0.3);
+  }
+  .hero-sub {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--electric);
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(0,210,255,0.4);
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--electric);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--electric);
+    box-shadow: 0 0 6px var(--electric);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* ── EVENT CARDS ── */
+  .event-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+    transition: all 0.35s;
+    position: relative;
+  }
+  .event-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(0,210,255,0);
+    transition: border-color 0.35s;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .event-card:hover::before {
+    border-color: rgba(0,210,255,0.4);
+    box-shadow: inset 0 0 30px rgba(0,210,255,0.05);
+  }
+  .event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,210,255,0.08);
+  }
+  .event-card-img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+    filter: brightness(0.85) saturate(0.8);
+  }
+  .event-card:hover .event-card-img {
+    transform: scale(1.04);
+    filter: brightness(0.95) saturate(1);
+  }
+  .event-day-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(11,11,12,0.9);
+    border: 1px solid rgba(0,210,255,0.5);
+    padding: 4px 12px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--electric);
+    box-shadow: 0 0 12px rgba(0,210,255,0.2);
+    z-index: 3;
+  }
+  .event-card-body {
+    padding: 1.5rem;
+  }
+  .event-time {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .event-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+    margin-bottom: 0.4rem;
+    line-height: 1;
+  }
+  .event-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+  .event-genre-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .genre-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--electric);
+    border: 1px solid rgba(0,210,255,0.3);
+    padding: 3px 10px;
+    font-weight: 600;
+  }
+
+  /* ── VIP SECTION ── */
+  .vip-section {
+    background: linear-gradient(180deg, var(--bg-deep) 0%, #0E0E10 50%, var(--bg-deep) 100%);
+  }
+  .vip-image-block {
+    position: relative;
+    overflow: hidden;
+  }
+  .vip-image-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) saturate(0.7);
+    display: block;
+  }
+  .vip-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,210,255,0.08), transparent);
+  }
+  .vip-image-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+
+  /* ── BOOKING FORM ── */
+  .booking-form {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2.5rem;
+  }
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  .form-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 0.5rem;
+  }
+  .form-input, .form-select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #E8E8F0;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.25s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-select:focus {
+    border-color: rgba(0,210,255,0.6);
+    background: rgba(0,210,255,0.04);
+    box-shadow: 0 0 0 1px rgba(0,210,255,0.3), 0 0 20px rgba(0,210,255,0.06);
+  }
+  .form-input::placeholder { color: var(--text-muted); }
+  .form-select option {
+    background: #1A1A1E;
+    color: #E8E8F0;
+  }
+  .form-select-wrapper {
+    position: relative;
+  }
+  .form-select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--electric);
+    pointer-events: none;
+  }
+  .table-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .table-option {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255,255,255,0.02);
+  }
+  .table-option:hover {
+    border-color: rgba(0,210,255,0.4);
+    background: rgba(0,210,255,0.04);
+  }
+  .table-option input[type="radio"] { display: none; }
+  .table-option.selected {
+    border-color: var(--electric);
+    background: rgba(0,210,255,0.07);
+    box-shadow: 0 0 16px rgba(0,210,255,0.1);
+  }
+  .radio-dot {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid rgba(0,210,255,0.5);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .table-option.selected .radio-dot {
+    border-color: var(--electric);
+    background: rgba(0,210,255,0.15);
+  }
+  .radio-dot::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--electric);
+    opacity: 0;
+    transition: opacity 0.2s;
+    box-shadow: 0 0 8px var(--cyan);
+  }
+  .table-option.selected .radio-dot::after { opacity: 1; }
+  .table-option-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #E8E8F0;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+  .table-option-detail {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .table-option.selected .table-option-name { color: var(--electric); }
+
+  /* ── DIVIDER ── */
+  .neon-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--electric), transparent);
+    opacity: 0.25;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-mid);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-info-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+  .footer-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(0,210,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--electric);
+  }
+  .footer-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .footer-value {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+  .social-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+  .social-btn:hover {
+    border-color: var(--electric);
+    color: var(--electric);
+    box-shadow: 0 0 16px rgba(0,210,255,0.2);
+  }
+
+  /* ── NOTIFICATION ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--bg-card);
+    border: 1px solid rgba(0,210,255,0.5);
+    padding: 1rem 1.5rem;
+    font-size: 0.82rem;
+    color: var(--electric);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    z-index: 999;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 40px rgba(0,210,255,0.15);
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg-deep); }
+  ::-webkit-scrollbar-thumb { background: rgba(0,210,255,0.3); border-radius: 2px; }
+
+  /* ── UTILITIES ── */
+  .electric-line {
+    display: inline-block;
+    width: 40px;
+    height: 2px;
+    background: var(--electric);
+    box-shadow: 0 0 8px var(--electric);
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .booking-form { padding: 1.5rem; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════ NAVBAR ════ -->
+<nav>
+  <a href="#" class="panther-logo">
+    <div class="logo-emblem"></div>
+    <div class="logo-wordmark">
+      <span>PANTHER</span>
+      <span>Dubai · Est. 2021</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#events">Events</a>
+    <a href="#booking">Reserve</a>
+    <a href="#location">Location</a>
+  </div>
+  <a href="#booking" class="btn-primary">Book Table</a>
+</nav>
+
+<!-- ════════════════════════════════════════ HERO ════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content py-20">
+    <div class="hero-eyebrow">Hilton Dubai Creek &mdash; Deira</div>
+
+    <h1 class="hero-title">
+      PANTHER<br />
+      <span class="accent">DUBAI</span>
+    </h1>
+
+    <p class="hero-sub">Surreal Vibes. Unmatched Energy.</p>
+
+    <div style="width:60px; height:2px; background:linear-gradient(90deg,var(--electric),transparent); margin-bottom:1.5rem; box-shadow: 0 0 12px var(--electric);"></div>
+
+    <p style="color:var(--text-muted); font-size:0.9rem; max-width:400px; line-height:1.8; margin-bottom:2.5rem; letter-spacing:0.02em;">
+      Dubai's most curated VIP nightclub experience. Premium bottle service, world-class resident DJs, and a venue designed to disappear into.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">Reserve VIP Table</a>
+      <a href="#events" class="btn-ghost">View Weekend Lineup</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">9PM</span>
+        <span class="stat-label">Doors Open</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3AM</span>
+        <span class="stat-label">Last Entry</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">VIP Tiers</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">250+</span>
+        <span class="stat-label">Capacity</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; z-index:3;">
+    <span style="font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted);">Scroll</span>
+    <div style="width:1px; height:40px; background:linear-gradient(to bottom, var(--electric), transparent); animation: scrollPulse 2s infinite;"></div>
+  </div>
+</section>
+
+<style>
+@keyframes scrollPulse {
+  0%, 100% { opacity:0.3; }
+  50% { opacity:1; }
+}
+</style>
+
+<div class="neon-divider"></div>
+
+<!-- ════════════════════════════════════════ EVENTS ════ -->
+<section id="events" style="padding: 6rem 1.5rem; background: var(--bg-deep);">
+  <div style="max-width:1200px; margin:0 auto;">
+
+    <div style="margin-bottom:3.5rem;">
+      <div class="section-eyebrow">Weekly Programming</div>
+      <h2 class="section-title">THIS WEEK'S<br/>LINEUP</h2>
+      <p class="section-desc">Three signature nights. Three distinct energies. One address that defines Dubai's elite nightlife circuit.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5px; background: rgba(0,210,255,0.05);">
+
+      <!-- Card 1: Friday -->
+      <div class="event-card">
+        <div style="position:relative; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800" alt="Neon Pulse Friday" class="event-card-img"/>
+          <div class="event-day-badge">Friday</div>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(11,11,12,0.8) 0%, transparent 60%);"></div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-time">
+            <i data-lucide="clock" style="width:12px; height:12px;"></i>
+            10:00 PM — 3:00 AM
+          </div>
+          <div class="event-name">NEON PULSE</div>
+          <p class="event-desc">Our flagship Friday night. Resident DJs curate a journey from underground house to peak-hour techno, lit by Panther's signature neon rig.</p>
+          <div class="event-genre-tags">
+            <span class="genre-tag">Tech House</span>
+            <span class="genre-tag">Afro House</span>
+            <span class="genre-tag">Peak Techno</span>
+          </div>
+          <button onclick="openGuestlist('Neon Pulse — Friday')" class="btn-ghost" style="width:100%; text-align:center;">Join Guestlist</button>
+        </div>
+      </div>
+
+      <!-- Card 2: Saturday -->
+      <div class="event-card">
+        <div style="position:relative; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&q=80&w=800" alt="Surreal Saturdays" class="event-card-img"/>
+          <div class="event-day-badge" style="background:rgba(0,240,255,0.15); border-color:var(--cyan); color:var(--cyan);">Saturday</div>
+          <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--electric), var(--cyan));"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(11,11,12,0.8) 0%, transparent 60%);"></div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-time">
+            <i data-lucide="clock" style="width:12px; height:12px;"></i>
+            9:30 PM — 3:00 AM
+          </div>
+          <div class="event-name" style="color: var(--cyan);">SURREAL SATURDAYS</div>
+          <p class="event-desc">Dubai's most anticipated Saturday experience. International guest DJs, luxury bottle presentations, and a crowd that defines the city's finest.</p>
+          <div class="event-genre-tags">
+            <span class="genre-tag" style="color:var(--cyan); border-color:rgba(0,240,255,0.3);">Commercial House</span>
+            <span class="genre-tag" style="color:var(--cyan); border-color:rgba(0,240,255,0.3);">R&B</span>
+            <span class="genre-tag" style="color:var(--cyan); border-color:rgba(0,240,255,0.3);">Hip-Hop</span>
+          </div>
+          <button onclick="openGuestlist('Surreal Saturdays — Saturday')" class="btn-primary" style="width:100%; text-align:center; clip-path:none;">Join Guestlist</button>
+        </div>
+      </div>
+
+      <!-- Card 3: Sunday -->
+      <div class="event-card">
+        <div style="position:relative; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800" alt="Deep House Oasis" class="event-card-img" style="object-position: center 30%;"/>
+          <div class="event-day-badge">Sunday</div>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(11,11,12,0.8) 0%, transparent 60%);"></div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-time">
+            <i data-lucide="clock" style="width:12px; height:12px;"></i>
+            9:00 PM — 2:00 AM
+          </div>
+          <div class="event-name">DEEP HOUSE OASIS</div>
+          <p class="event-desc">Sunday wind-down redefined. Soulful deep house, melodic techno, and an intimate atmosphere perfect for the discerning crowd.</p>
+          <div class="event-genre-tags">
+            <span class="genre-tag">Deep House</span>
+            <span class="genre-tag">Melodic</span>
+            <span class="genre-tag">Organic</span>
+          </div>
+          <button onclick="openGuestlist('Deep House Oasis — Sunday')" class="btn-ghost" style="width:100%; text-align:center;">Join Guestlist</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ════════════════════════════════════════ BOOKING ════ -->
+<section id="booking" style="padding: 6rem 1.5rem; background: var(--bg-deep);">
+  <div style="max-width:1200px; margin:0 auto;">
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4rem; align-items:start;" class="booking-grid">
+
+      <!-- LEFT: Info -->
+      <div>
+        <div class="section-eyebrow">VIP Reservations</div>
+        <h2 class="section-title">RESERVE YOUR<br/>TABLE</h2>
+        <p class="section-desc" style="margin-bottom:2rem;">
+          Secure your exclusive VIP experience at Panther Dubai. All reservations are confirmed directly via WhatsApp by our dedicated concierge team.
+        </p>
+
+        <div style="margin-bottom:2rem;">
+          <div class="vip-image-block" style="height:280px; margin-bottom:1.5rem;">
+            <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&q=80&w=800" alt="VIP Table Service" />
+            <div class="vip-image-overlay"></div>
+            <div class="vip-image-label">
+              <span class="genre-tag" style="display:inline-block; margin-bottom:6px;">Premium Service</span>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:white; letter-spacing:0.06em;">VVIP STAGE BOX</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-left:2px solid var(--electric); padding-left:1.25rem; margin-bottom:1.5rem;">
+          <div style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">Minimum Spend</div>
+          <div style="font-size:0.9rem; color:var(--text-soft); line-height:1.6;">
+            Main Dancefloor: AED 2,000+<br/>
+            VIP Lounge: AED 5,000+<br/>
+            VVIP Stage Private Box: AED 12,000+
+          </div>
+        </div>
+
+        <div style="border-left:2px solid rgba(0,210,255,0.3); padding-left:1.25rem;">
+          <div style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px;">Concierge Hours</div>
+          <div style="font-size:0.9rem; color:var(--text-soft);">Daily 2:00 PM — 10:00 PM<br/>WhatsApp preferred</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div>
+        <div class="booking-form">
+          <div style="margin-bottom:2rem;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.1em; color:var(--electric); margin-bottom:4px;">VIP BOOKING REQUEST</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em;">Your reservation will be confirmed within 2 hours via WhatsApp.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="f-name" class="form-input" placeholder="Your full name" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">WhatsApp Number</label>
+            <input type="tel" id="f-phone" class="form-input" placeholder="+971 5XX XXX XXXX" />
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label class="form-label">Date</label>
+              <input type="date" id="f-date" class="form-input" style="color-scheme:dark;" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Guests</label>
+              <div class="form-select-wrapper">
+                <select id="f-guests" class="form-input form-select">
+                  <option value="">Select</option>
+                  <option value="2">2 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="8">8 Guests</option>
+                  <option value="10">10+ Guests</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="margin-bottom:0.75rem;">Table Category</label>
+            <div class="table-options" id="table-options">
+              <label class="table-option" onclick="selectTable(this, 'Main Dancefloor')">
+                <input type="radio" name="table" value="Main Dancefloor"/>
+                <div class="radio-dot"></div>
+                <div>
+                  <div class="table-option-name">Main Dancefloor</div>
+                  <div class="table-option-detail">Prime floor position · AED 2,000+ min spend</div>
+                </div>
+              </label>
+              <label class="table-option" onclick="selectTable(this, 'VIP Lounge')">
+                <input type="radio" name="table" value="VIP Lounge"/>
+                <div class="radio-dot"></div>
+                <div>
+                  <div class="table-option-name">VIP Lounge</div>
+                  <div class="table-option-detail">Elevated booth with panoramic stage view · AED 5,000+</div>
+                </div>
+              </label>
+              <label class="table-option" onclick="selectTable(this, 'VVIP Stage Private Box')">
+                <input type="radio" name="table" value="VVIP Stage Private Box"/>
+                <div class="radio-dot"></div>
+                <div>
+                  <div class="table-option-name">VVIP Stage Private Box</div>
+                  <div class="table-option-detail">Exclusive private enclosure · AED 12,000+ min spend</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:0.5rem;">
+            <label class="form-label">Special Requests</label>
+            <textarea id="f-notes" class="form-input" rows="2" placeholder="Celebrations, dietary needs, specific bottle requests..." style="resize:vertical;"></textarea>
+          </div>
+
+          <button onclick="submitBooking()" class="btn-primary" style="width:100%; text-align:center; clip-path:none; padding:1rem; font-size:0.82rem; margin-top:0.5rem; display:flex; align-items:center; justify-content:center; gap:10px;">
+            <i data-lucide="message-circle" style="width:16px; height:16px;"></i>
+            SEND VIA WHATSAPP
+          </button>
+
+          <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:0.75rem; letter-spacing:0.05em;">
+            Opens WhatsApp with your booking details pre-filled
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+@media (max-width: 768px) {
+  .booking-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+</style>
+
+<div class="neon-divider"></div>
+
+<!-- ════════════════════════════════════════ FOOTER / LOCATION ════ -->
+<footer id="location" style="padding: 4rem 1.5rem 2rem;">
+  <div style="max-width:1200px; margin:0 auto;">
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:3rem; margin-bottom:3rem;">
+
+      <!-- Brand column -->
+      <div>
+        <a href="#" class="panther-logo" style="margin-bottom:1.25rem; display:inline-flex;">
+          <div class="logo-emblem" style="width:36px; height:36px;"></div>
+          <div class="logo-wordmark">
+            <span>PANTHER</span>
+            <span>Dubai</span>
+          </div>
+        </a>
+        <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.8; margin-top:1rem; max-width:260px;">
+          Where Dubai's elite converge. Premium nightlife at Hilton Dubai Creek, defining the city's VIP entertainment experience since 2021.
+        </p>
+        <div style="display:flex; gap:0.75rem; margin-top:1.5rem;">
+          <a href="https://instagram.com" target="_blank" class="social-btn" aria-label="Instagram">
+            <i data-lucide="instagram" style="width:16px; height:16px;"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" class="social-btn" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="https://wa.me/971542574159" target="_blank" class="social-btn" aria-label="WhatsApp">
+            <i data-lucide="message-circle" style="width:16px; height:16px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div>
+        <div style="font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--electric); font-weight:600; margin-bottom:1.25rem;">Find Us</div>
+        <div class="footer-info-block">
+          <div class="footer-icon">
+            <i data-lucide="map-pin" style="width:16px; height:16px;"></i>
+          </div>
+          <div>
+            <div class="footer-label">Address</div>
+            <div class="footer-value">Hilton Dubai Creek Hotel & Residences<br/>Deira, Dubai, UAE</div>
+          </div>
+        </div>
+        <div class="footer-info-block">
+          <div class="footer-icon">
+            <i data-lucide="clock" style="width:16px; height:16px;"></i>
+          </div>
+          <div>
+            <div class="footer-label">Opening Hours</div>
+            <div class="footer-value">Wednesday — Sunday<br/>9:00 PM — 3:00 AM</div>
+          </div>
+        </div>
+        <div class="footer-info-block">
+          <div class="footer-icon">
+            <i data-lucide="phone" style="width:16px; height:16px;"></i>
+          </div>
+          <div>
+            <div class="footer-label">Reservations</div>
+            <div class="footer-value">
+              <a href="https://wa.me/971542574159" style="color:var(--electric); text-decoration:none;">+971 54 257 4159</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <div style="font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--electric); font-weight:600; margin-bottom:1.25rem;">Quick Access</div>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <a href="#events" style="font-size:0.85rem; color:var(--text-muted); text-decoration:none; letter-spacing:0.06em; transition:color 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--electric)'" onmouseout="this.style.color='var(--text-muted)'">
+            <span style="width:16px; height:1px; background:rgba(0,210,255,0.4); display:inline-block;"></span> Weekly Events
+          </a>
+          <a href="#booking" style="font-size:0.85rem; color:var(--text-muted); text-decoration:none; letter-spacing:0.06em; transition:color 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--electric)'" onmouseout="this.style.color='var(--text-muted)'">
+            <span style="width:16px; height:1px; background:rgba(0,210,255,0.4); display:inline-block;"></span> Reserve VIP Table
+          </a>
+          <a href="https://wa.me/971542574159" target="_blank" style="font-size:0.85rem; color:var(--text-muted); text-decoration:none; letter-spacing:0.06em; transition:color 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--electric)'" onmouseout="this.style.color='var(--text-muted)'">
+            <span style="width:16px; height:1px; background:rgba(0,210,255,0.4); display:inline-block;"></span> WhatsApp Concierge
+          </a>
+          <a href="https://maps.google.com/?q=Hilton+Dubai+Creek" target="_blank" style="font-size:0.85rem; color:var(--text-muted); text-decoration:none; letter-spacing:0.06em; transition:color 0.2s; display:flex; align-items:center; gap:8px;" onmouseover="this.style.color='var(--electric)'" onmouseout="this.style.color='var(--text-muted)'">
+            <span style="width:16px; height:1px; background:rgba(0,210,255,0.4); display:inline-block;"></span> Get Directions
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="neon-divider" style="margin-bottom:1.5rem;"></div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div style="font-size:0.72rem; color:var(--text-muted); letter-spacing:0.06em;">
+        © 2024 Panther Dubai. All rights reserved. Must be 21+ to enter.
+      </div>
+      <div style="font-size:0.72rem; color:var(--text-muted); letter-spacing:0.06em;">
+        Dress code strictly enforced · Management reserves right of admission
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">✓ Opening WhatsApp with your booking details…</div>
+
+<!-- ════════════════════════════════════════ SCRIPTS ════ -->
+<script>
+  // Init Lucide icons
+  lucide.createIcons();
+
+  // Table selection
+  let selectedTable = '';
+  function selectTable(el, value) {
+    document.querySelectorAll('.table-option').forEach(opt => opt.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedTable = value;
+  }
+
+  // Guestlist WhatsApp
+  function openGuestlist(eventName) {
+    const msg = encodeURIComponent(
+      `🐾 *PANTHER DUBAI — GUESTLIST REQUEST*\n\n` +
+      `Event: ${eventName}\n\n` +
+      `I'd like to join the guestlist for this event. Please confirm availability and guestlist details.\n\n` +
+      `Thank you!`
+    );
+    window.open(`https://wa.me/971542574159?text=${msg}`, '_blank');
+  }
+
+  // Main booking form
+  function submitBooking() {
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const date    = document.getElementById('f-date').value;
+    const guests  = document.getElementById('f-guests').value;
+    const notes   = document.getElementById('f-notes').value.trim();
+
+    // Validation
+    if (!name)          { shakeField('f-name',   'Please enter your full name.');      return; }
+    if (!phone)         { shakeField('f-phone',  'Please enter your WhatsApp number.'); return; }
+    if (!date)          { shakeField('f-date',   'Please select a date.');              return; }
+    if (!guests)        { shakeField('f-guests', 'Please select guest count.');         return; }
+    if (!selectedTable) { alert('Please select a table category.');                     return; }
+
+    // Format the date
+    const d = new Date(date + 'T12:00:00');
+    const formatted = d.toLocaleDateString('en-AE', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+    // Build WhatsApp message
+    const msg = encodeURIComponent(
+      `🐾 *VIP TABLE BOOKING REQUEST — PANTHER DUBAI*\n` +
+      `━━━━━━━━━━━━━━━━━━━━━\n\n` +
+      `👤 *Name:* ${name}\n` +
+      `📱 *WhatsApp:* ${phone}\n` +
+      `📅 *Date:* ${formatted}\n` +
+      `👥 *Guests:* ${guests}\n` +
+      `🥂 *Table Category:* ${selectedTable}\n` +
+      `${notes ? `📝 *Special Requests:* ${notes}\n` : ''}` +
+      `\n━━━━━━━━━━━━━━━━━━━━━\n` +
+      `📍 Hilton Dubai Creek Hotel & Residences, Deira, Dubai\n\n` +
+      `_Please confirm my VIP reservation at your earliest convenience. Thank you!_`
+    );
+
+    showToast();
+    setTimeout(() => {
+      window.open(`https://wa.me/971542574159?text=${msg}`, '_blank');
+    }, 600);
+  }
+
+  function shakeField(id, msg) {
+    const el = document.getElementById(id);
+    el.style.borderColor = '#FF4466';
+    el.style.boxShadow = '0 0 0 1px rgba(255,68,102,0.4)';
+    el.focus();
+    setTimeout(() => {
+      el.style.borderColor = '';
+      el.style.boxShadow = '';
+    }, 2000);
+    alert(msg);
+  }
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(11,11,12,0.95)';
+      nav.style.borderBottomColor = 'rgba(0,210,255,0.12)';
+    } else {
+      nav.style.background = 'rgba(11,11,12,0.72)';
+      nav.style.borderBottomColor = 'rgba(0,210,255,0.1)';
+    }
+  });
+</script>
+
+</body>
+</html>
