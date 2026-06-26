@@ -4,8 +4,127 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panther Dubai — Admin</title>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'danielwendesenhaile-create/panther-dubai',
+          branch: 'main',
+          base_url: 'https://panther-auth.onrender.com',
+          auth_endpoint: '/callback'
+        },
+        media_folder: 'images/uploads',
+        public_folder: '/images/uploads',
+        collections: [
+          {
+            name: 'announcements',
+            label: 'Announcement Banner',
+            files: [{
+              name: 'banner',
+              label: 'Banner Settings',
+              file: 'data/announcement.json',
+              fields: [
+                { label: 'Show Banner', name: 'active', widget: 'boolean', default: false },
+                { label: 'Banner Message', name: 'message', widget: 'string' }
+              ]
+            }]
+          },
+          {
+            name: 'site_settings',
+            label: 'Site Settings',
+            files: [{
+              name: 'general',
+              label: 'General Info',
+              file: 'data/settings.json',
+              fields: [
+                { label: 'WhatsApp Number', name: 'whatsapp', widget: 'string' },
+                { label: 'Opening Hours', name: 'hours', widget: 'string' },
+                { label: 'Venue Address', name: 'address', widget: 'string' },
+                { label: 'Hero Headline Line 1', name: 'hero_line1', widget: 'string' },
+                { label: 'Hero Headline Line 2', name: 'hero_line2', widget: 'string' },
+                { label: 'Hero Subtext', name: 'hero_sub', widget: 'string' }
+              ]
+            }]
+          },
+          {
+            name: 'pricing',
+            label: 'Table Pricing',
+            files: [{
+              name: 'tables',
+              label: 'Table Categories',
+              file: 'data/pricing.json',
+              fields: [
+                { label: 'Main Dancefloor Price', name: 'dancefloor', widget: 'string' },
+                { label: 'VIP Lounge Price', name: 'vip', widget: 'string' },
+                { label: 'VVIP Stage Private Box Price', name: 'vvip', widget: 'string' }
+              ]
+            }]
+          },
+          {
+            name: 'events',
+            label: 'Weekly Events',
+            files: [
+              {
+                name: 'friday',
+                label: 'Friday Night',
+                file: 'data/friday.json',
+                fields: [
+                  { label: 'Event Name', name: 'name', widget: 'string' },
+                  { label: 'Time', name: 'time', widget: 'string' },
+                  { label: 'Description', name: 'description', widget: 'text' },
+                  { label: 'Genre Tags', name: 'genres', widget: 'list', field: { label: 'Genre', name: 'genre', widget: 'string' } }
+                ]
+              },
+              {
+                name: 'saturday',
+                label: 'Saturday Night',
+                file: 'data/saturday.json',
+                fields: [
+                  { label: 'Event Name', name: 'name', widget: 'string' },
+                  { label: 'Time', name: 'time', widget: 'string' },
+                  { label: 'Description', name: 'description', widget: 'text' },
+                  { label: 'Genre Tags', name: 'genres', widget: 'list', field: { label: 'Genre', name: 'genre', widget: 'string' } }
+                ]
+              },
+              {
+                name: 'sunday',
+                label: 'Sunday Night',
+                file: 'data/sunday.json',
+                fields: [
+                  { label: 'Event Name', name: 'name', widget: 'string' },
+                  { label: 'Time', name: 'time', widget: 'string' },
+                  { label: 'Description', name: 'description', widget: 'text' },
+                  { label: 'Genre Tags', name: 'genres', widget: 'list', field: { label: 'Genre', name: 'genre', widget: 'string' } }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'djs',
+            label: 'Guest DJ Lineup',
+            folder: 'data/djs',
+            create: true,
+            slug: '{{slug}}',
+            fields: [
+              { label: 'DJ Name', name: 'name', widget: 'string' },
+              { label: 'Date', name: 'date', widget: 'date', format: 'DD MMM YYYY' },
+              { label: 'Night', name: 'night', widget: 'select', options: ['Friday', 'Saturday', 'Sunday'] },
+              { label: 'Genre', name: 'genre', widget: 'string' },
+              { label: 'Origin City', name: 'city', widget: 'string' },
+              { label: 'Short Bio', name: 'bio', widget: 'text', required: false },
+              { label: 'Photo', name: 'photo', widget: 'image', required: false }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html>
