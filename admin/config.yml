@@ -2,7 +2,8 @@ backend:
   name: github
   repo: danielwendesenhaile-create/panther-dubai
   branch: main
-  base_url: https://panther-dubai.onrender.com
+  base_url: https://panther-auth.onrender.com
+  auth_endpoint: /callback
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
