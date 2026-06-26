@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: panther-dubai
+    runtime: static
+    buildCommand: echo "no build needed"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /admin
+        destination: /admin/index.html
+      - type: rewrite
+        source: /admin/*
+        destination: /admin/index.html
